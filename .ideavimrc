@@ -1,0 +1,117 @@
+"" Source your .vimrc
+"source ~/.vimrc
+
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+set relativenumber
+set visualbell
+set noerrorbells
+set NERDTree
+set highlightedyank
+set number
+set surround
+
+" Leader key is the spacebar
+let mapleader = " "
+
+" Better escape sequence
+imap jk <ESC>
+imap kj <ESC>
+
+" Use system clipboard from idea and vice versa
+set clipboard+=unnamed
+
+" Quickly reload vimrc
+nnoremap <C-q> :action IdeaVim.ReloadVimRc.reload<CR>
+
+" Put x/r into the black hole register so they don't get copied. So if I want
+" to cut a paste, use select + d. If I just want to delete use select + x
+nnoremap x "_x
+nnoremap r "_r
+
+" Don't yank while pasting
+xnoremap p "_dP
+
+" Map the enter key to CLEAR the highlight from the last search
+nnoremap <CR> :noh<CR><CR>
+
+" Closing Panes "close close" and "close all"
+map qq <Action>(CloseContent)
+map qa <Action>(CloseAllEditors)
+
+" Sets hjkl as pane movement keys
+nnoremap <leader>wh <c-w>h
+nnoremap <leader>wl <c-w>l
+nnoremap <leader>wj <c-w>j
+nnoremap <leader>wk <c-w>k
+
+" Code navigation
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+vmap <C-o> <Action>(Back)
+vmap <C-r> :u<CR>
+nmap <C-r> :u<CR>
+vmap <C-o> <Action>(Back)
+nmap gr <Action>(RenameElement)
+vmap gr <Action>(RenameElement)
+nmap gd <Action>(GotoDeclaration)
+vmap gd <Action>(GotoDeclaration)
+nmap gi <Action>(GotoImplementation)
+vmap gi <Action>(GotoImplementation)
+nmap gt <Action>(GotoTest)
+vmap gt <Action>(GotoTest)
+nmap gf <Action>(FindUsages)
+vmap gf <Action>(FindUsages)
+nmap go <Action>(FileStructurePopup)
+vmap go <Action>(FileStructurePopup)
+imap <C-k> <Action>(EditorUp)
+imap <C-j> <Action>(EditorDown)
+nmap w [w
+vmap w [w
+nmap e ]w
+vmap e ]w
+nmap b [b
+vmap b [b
+
+" Commenting
+nmap <Leader>c :action CommentByLineComment<CR>
+nmap <Leader>b :action CommentByBlockComment<CR>
+
+" Run
+vmap <Leader>r :action ChooseRunConfiguration<CR>
+nmap <Leader>r :action ChooseRunConfiguration<CR>
+
+" Debug
+vmap <Leader>d :action ChooseDebugConfiguration<CR>
+nmap <Leader>d :action ChooseDebugConfiguration<CR>
+" map <leader>b <Action>(ToggleLineBreakpoint)
+nmap <F6> <Action>(StepOver)
+vmap <F6> <Action>(StepOver)
+nmap <F5> <Action>(ForceStepInto)
+vmap <F5> <Action>(ForceStepInto)
+nmap <F8> <Action>(Resume)
+vmap <F8> <Action>(Resume)
+nmap <F7> <Action>(StepOut)
+vmap <F7> <Action>(StepOut)
+
+" Code format
+nmap -- <Action>(OptimizeImports)
+vmap -- <Action>(OptimizeImports)
+nmap == <Action>(ReformatCode)
+vmap == <Action>(ReformatCode)
+vmap S <Action>(EditorUnSelectWord)
+nmap S <Action>(EditorUnSelectWord)
+vmap s <Action>(EditorSelectWord)
+nmap s <Action>(EditorSelectWord)
+
+" File navigation
+map <leader>p :NERDTree<CR>
+map <leader>e :action RecentFiles<CR>
+
+" Find more examples here: https://jb.gg/share-ideavimrc
+" Do incremental searching.
